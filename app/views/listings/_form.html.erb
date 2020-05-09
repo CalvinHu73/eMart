@@ -1,0 +1,44 @@
+<%= form_with(model: listing, local: true) do |form| %>
+  <% if listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+        <% listing.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :item_name %><br>
+    <%= form.text_field :item_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.all, :id, :name%>
+  </div>
+
+  <div class="field">
+    <%= form.label :item_image %><br>
+    <%= form.file_field :listing_img %>
+  </div>
+
+  <%unless @listing.user%>
+    <div class="field">
+      <%= form.label :insert_link_to_autofill_item_name_and_description %>
+      <%= form.text_field :link %>
+    </div>
+  <%end%>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

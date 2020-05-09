@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users</h1>
+
+<div class ="row">
+  <% @users.each do |user| %>
+    <div class="col-3" style="padding: 10px;">
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-title"><%= user.username %></h5>
+          <div class="card-img">
+            <img src="<%= url_for(user.user_img) %>" class="card-img-top" alt="...">
+          </div>
+          <a href=<%="#{user_path(user)}"%> class="btn btn-primary">View</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<a href=<%="#{listings_path}"%> class="btn btn-primary">View All Listings</a>
+
+<h1>
+  <strong>Category:</strong>
+  <%= @category.name %>
+</h1>
+
+<% if logged_in?%>
+<a data-method="post" href=<%="/follow_category/#{current_user.id}/#{@category.id}"%> class="btn btn-secondary">Follow</a>
+
+<a data-method="delete" href=<%="/unfollow_category/#{current_user.id}/#{@category.id}"%> class="btn btn-danger">Unfollow</a>
+<%end%>
+
+<h3>Listings</h3>
+
+<div class ="row">
+  <% @category.listings.each do |listing| %>
+    <div class="col-3" style="padding: 10px;">
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-title"><%= listing.item_name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= listing.category.name %></h6>
+          <div class="card-img">
+            <img src="<%= url_for(listing.listing_img) %>" class="card-img-top" alt="...">
+          </div>
+          <p class="card-text"><%= truncate(listing.description, :length => 100) %></p>
+          <a href=<%="#{listing_path(listing)}"%> class="btn btn-primary">View</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

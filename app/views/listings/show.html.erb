@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<div style="width:50%; margin:auto">
+  <a href=<%="#{listings_path}"%> class="btn btn-primary">View All Listings</a>
+  
+
+  <h1><%= @listing.item_name %></h1>
+  <a href=<%="/categories/#{@listing.category.id}"%> class="btn btn-primary"><%= @listing.category.name %></a>
+  <%if logged_in? && @listing.user.id == current_user.id%>
+    <a href=<%="#{edit_listing_path(@listing)}"%> class="btn btn-info">Edit Listing</a>
+
+    <a data-method="delete" href=<%="#{@listing}"%> class="btn btn-danger">Delete</a>
+
+  <%end%>
+  <p><strong>Seller: </strong>  
+  <%= link_to @listing.user.username, user_path(@listing.user), {:style=>'color:blue;'} %></p>
+  <div class="container-img">
+    <img src = "<%= url_for(@listing.listing_img) %>" class="container-img"/>
+  </div>
+  <h5>Description:</h5>
+  <p><%= @listing.description %></p>
+</div>
