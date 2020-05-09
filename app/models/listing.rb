@@ -9,6 +9,15 @@ class Listing < ApplicationRecord
   require 'link_thumbnailer'
   require 'open-uri'
 
+  def url?
+    uri = URI.parse(link)
+    %w( http https ).include?(uri.scheme)
+  rescue URI::BadURIError
+    false
+  rescue URI::InvalidURIError
+    false
+  end
+  
   def self.blank
     open("http://homepages.neiu.edu/~nchaudhr/Frames/images/gray.jpg")
   end

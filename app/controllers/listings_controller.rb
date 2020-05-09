@@ -31,6 +31,10 @@ class ListingsController < ApplicationController
     unless @listing.listing_img.attached?
       @listing.listing_img.attach(io: Listing.blank, filename: "listing_img",content_type: Listing.blank.content_type_parse.first )
     end
+    if @listing.url?
+      @listing.item_name= @listing.link_title
+      @listing.description= @listing.link_description
+    end
 
     respond_to do |format|
       if @listing.save
