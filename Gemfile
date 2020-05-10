@@ -10,7 +10,7 @@ gem 'bcrypt'
 gem "http"
 gem 'link_thumbnailer'
 gem 'friendly_id', '~> 5.2.4'
-gem 'faraday'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'

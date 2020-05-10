@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Final Project for CIS-196 Ruby on Rails Web Development @ University of Pennsylvania
 
-Things you may want to cover:
+This is a website that I made for my final project.
+It is an online market where users can post listings of the items that they have. Other features include sorting by categories and a 'My Feed' page that displays listings of the categories that a user follows.
 
-* Ruby version
+To run on localhost:
 
-* System dependencies
+* bundle install
 
-* Configuration
+* rails db:migrate
 
-* Database creation
+* rake db:seed
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* rails s -b 0.0.0.0
